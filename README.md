@@ -30,10 +30,13 @@ Input plugins:
 
 * input_file
 * input_http
+* input_uvc ([documentation](mjpg-streamer-experimental/plugins/input_uvc/README.md))
+
+Input plugins (not enabled):
+
 * input_opencv ([documentation](mjpg-streamer-experimental/plugins/input_opencv/README.md))
 * input_ptp2
 * input_raspicam ([documentation](mjpg-streamer-experimental/plugins/input_raspicam/README.md))
-* input_uvc ([documentation](mjpg-streamer-experimental/plugins/input_uvc/README.md))
 
 Output plugins:
 
@@ -74,17 +77,17 @@ shows the basic steps.
     cd mjpg-streamer-experimental
     mkdir _build
     cd _build
-    cmake ..
+    cmake -i ..
+    cd ..
     make
     sudo make install
+    make clean
+    make distclean
 
 Usage
 =====
-From the mjpeg streamer experimental
-folder:
 ```
-export LD_LIBRARY_PATH=.
-./mjpg_streamer -o "output_http.so -w ./www" -i "input_raspicam.so"
+sudo mjpg_streamer -i "input_uvc.so -r 1280x720 -f 30" -o "output_http.so -p 8089 -w ./www"
 ```
 
 See [README.md](mjpg-streamer-experimental/README.md) or the individual plugin's documentation for more details.
